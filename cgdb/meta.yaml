@@ -1,0 +1,44 @@
+{% set name = "cgdb" %}
+{% set version = "0.7.1" %}
+
+package:
+  name: {{ name }}
+  version: {{ version }}
+
+source:
+  fn: {{ version }}.tar.gz
+  url: https://github.com/cgdb/{{ name }}/archive/v{{ version }}.tar.gz
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - {{ compiler('c') }}
+    - {{ compiler('gxx') }}
+    - automake
+    - flex
+    - texinfo
+  host:
+    - ncurses
+    - readline
+  run:
+    - ncurses
+
+test:
+  commands:
+    - which cgdb
+    - cgdb --version
+
+about:
+  home: https://github.com/cgdb/cgdb
+  license: GPL-2.0
+  license_family: GPL
+  license_file: COPYING
+  summary: 'Console front-end to the GNU debugger'
+  description: |
+          CGDB is a very lightweight console frontend to the GNU debugger. It provides a split screen interface showing the GDB session below and the program's source code above. The interface is modelled after vim's, so vim users should feel right at home using it. The recipe is maintained at https://github.com/bobbiewang/conda-recipes.
+
+extra:
+  recipe-maintainer:
+    - bobbiewang

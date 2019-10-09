@@ -1,0 +1,35 @@
+{% set name = "corkscrew" %}
+{% set version = "2.0" %}
+
+package:
+  name: {{ name }}
+  version: {{ version }}
+
+source:
+  fn: {{ version }}.tar.gz
+  url: https://github.com/patpadgett/{{ name }}/archive/v{{ version }}.tar.gz
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - {{ compiler('c') }}
+
+test:
+  commands:
+    - which corkscrew
+    - corkscrew --version | grep corkscrew
+
+about:
+  home: https://github.com/patpadgett/corkscrew
+  license: GPL-2.0
+  license_family: GPL
+  license_file: COPYING
+  summary: 'a tool for tunneling SSH through HTTP proxies'
+  description: |
+    Corkscrew is a tool for tunneling SSH through HTTP proxies. Setting up Corkscrew with SSH/OpenSSH is very simple. Adding the following line to your ~/.ssh/config file will usually do the trick (replace proxy.example.com and 8080 with correct values): ProxyCommand /usr/local/bin/corkscrew proxy.example.com 8080 %h %p. The recipe is maintained at https://github.com/bobbiewang/conda-recipes.
+
+extra:
+  recipe-maintainer:
+    - bobbiewang
