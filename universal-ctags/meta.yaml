@@ -1,0 +1,39 @@
+{% set name = "ctags" %}
+{% set version = "20191011" %}
+
+package:
+  name: {{name}}
+  version: {{version}}
+
+source:
+  git_url: https://github.com/universal-ctags/{{name}}.git
+  git_depth: 1
+
+build:
+  number: 0
+  include_recipe: False
+
+requirements:
+  build:
+    - {{ compiler('c') }}
+    - automake
+    - pkg-config
+    - git
+
+test:
+  commands:
+    - which ctags
+    - ctags --version
+
+about:
+  home: https://github.com/universal-ctags/ctags
+  license: GPL-2.0
+  license_family: GPL
+  license_file: COPYING
+  summary: 'Universal Ctags: A maintained ctags implementation'
+  description: |
+          Universal Ctags generates an index (or tag) file of language objects found in source files for many popular programming languages. This index makes it easy for text editors and other tools to locate the indexed items. Universal Ctags improves on traditional ctags because of its multilanguage support, its ability for the user to define new languages searched by regular expressions, and its ability to generate emacs-style TAGS files. The recipe is maintained at https://github.com/bobbiewang/conda-recipes.
+
+extra:
+  recipe-maintainer:
+    - bobbiewang
