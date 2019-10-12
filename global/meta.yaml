@@ -1,0 +1,35 @@
+{% set name = "global" %}
+{% set version = "6.6.3" %}
+
+package:
+  name: {{name}}
+  version: {{version}}
+
+source:
+  url: https://ftp.gnu.org/pub/gnu/global/{{name}}-{{version}}.tar.gz
+
+build:
+  number: 0
+  include_recipe: False
+
+requirements:
+  build:
+    - {{ compiler('c') }}
+
+test:
+  commands:
+    - which gtags
+    - gtags --version
+
+about:
+  home: https://www.gnu.org/software/global/
+  license: GPL-3.0
+  license_family: GPL
+  license_file: COPYING
+  summary: 'a source code tagging system'
+  description: |
+    GNU GLOBAL is a source code tagging system that works the same way across diverse environments, such as Emacs editor, Vi editor, Less viewer, Bash shell, various web browsers, etc. The recipe is maintained at https://github.com/bobbiewang/conda-recipes.
+
+extra:
+  recipe-maintainer:
+    - bobbiewang
