@@ -1,0 +1,38 @@
+{% set name = "irony-server" %}
+{% set version = "1.4.0" %}
+
+package:
+  name: {{name}}
+  version: {{version}}
+
+source:
+  url: https://github.com/Sarcasm/irony-mode/archive/v{{version}}.tar.gz
+
+build:
+  number: '0'
+  include_recipe: False
+
+requirements:
+  build:
+    - gxx_linux-64
+    - clangdev 8.0.0
+    - llvmdev 8.0.0
+    - cmake
+  run:
+    - libclang =8.0.0
+
+test:
+  commands:
+    - which {{name}}
+    - {{name}} --version
+
+about:
+  home: https://github.com/Sarcasm/irony-mode
+  license: GPL-3.0
+  summary: libclang interface to irony-mode
+  description: |
+    irony-server provides the libclang interface to irony-mode. It uses a simple protocol based on S-expression. The recipe is maintained at https://github.com/bobbiewang/conda-recipes.
+
+extra:
+  recipe-maintainers:
+    - bobbiewang
