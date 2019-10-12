@@ -1,0 +1,11 @@
+--- src/indexer.cc	2019-10-12 13:01:22.376360788 +0800
++++ src/indexer_new.cc	2019-10-12 13:53:30.294001409 +0800
+@@ -12,7 +12,7 @@
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ ==============================================================================*/
+-
++#define __STDC_FORMAT_MACROS
+ #include "indexer.hh"
+ 
+ #include "clang_tu.hh"
